@@ -154,6 +154,7 @@ p { margin: 0 0 1.2em; max-width: 60ch; }
 .video__play svg { width: 30px; height: 30px; fill: var(--hueso); margin-left: 4px; }
 .video__play[hidden] { display: none; }
 .video__aviso { position: absolute; left: 0; right: 0; top: 0; margin: 0; padding: .9rem 1.4rem; background: var(--rojo); color: var(--hueso); max-width: none; font-weight: 600; }
+.video__marco iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
 
 /* ---------- momentos ---------- */
 .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; }
@@ -362,16 +363,8 @@ p { margin: 0 0 1.2em; max-width: 60ch; }
   <h2 data-rev>Mi historia en video</h2>
   <p class="intro" data-rev>Dale play y conoce un poco más del camino.</p>
   <div class="video__marco" data-rev>
-    <!-- El video va dentro de la carpeta img con el nombre mi-video.mp4 -->
-    <video id="mi-video" controls playsinline preload="metadata" poster="img/video-portada.jpg">
-      <source src="img/mi-video.mp4" type="video/mp4">
-      Tu navegador no puede reproducir este video.
-    </video>
-    <button class="video__play" id="video-play" type="button" aria-label="Reproducir video">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
-    </button>
-    <p class="video__aviso" id="video-aviso" hidden>Aquí va tu video. Guárdalo como <b>mi-video.mp4</b> dentro de la carpeta <b>img</b>.</p>
-  </div>
+  <iframe src="https://www.youtube.com/embed/OVeMZ-xl4OM" title="Mi historia en video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
 </section>
 
 <!-- ===================== MOMENTOS ===================== -->
