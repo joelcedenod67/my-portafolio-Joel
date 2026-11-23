@@ -134,7 +134,9 @@ p { margin: 0 0 1.2em; max-width: 60ch; }
 @keyframes lat { 0%, 100% { transform: scale(1); } 12% { transform: scale(1.035); } 24% { transform: scale(1); } 36% { transform: scale(1.025); } }
 .pieza { padding: 0; margin: 0; cursor: pointer; border: 2px solid var(--negro); border-radius: 12px; overflow: hidden; background: var(--hueso); transition: transform .25s ease, box-shadow .25s ease; }
 .pieza img { width: 100%; height: 100%; object-fit: cover; }
-.pieza:hover { transform: translateY(-4px) rotate(-3deg); }
+.pieza--fija { cursor: default; }
+.pieza--viva { border-color: var(--rojo); border-width: 3px; }
+.pieza--viva:hover { transform: translateY(-4px) rotate(-3deg); }
 .pieza.misma { box-shadow: 0 0 0 3px var(--hueso); }
 .pieza[aria-pressed="true"] { transform: scale(1.12); z-index: 3; position: relative; box-shadow: 0 0 0 3px var(--rojo), 5px 5px 0 3px var(--negro); }
 .js .corazon .pieza { opacity: 0; scale: .4; }
@@ -343,7 +345,7 @@ p { margin: 0 0 1.2em; max-width: 60ch; }
 <section class="gente sec rosa" id="gente">
   <div class="gente__cabeza">
     <h2 data-rev>Mi gente, en un pedacito de mi corazón</h2>
-    <p data-rev>Cada pieza de este corazón es una persona que estuvo en algún momento del camino. Toca una pieza para conocerla.</p>
+    <p data-rev>Cada foto de este corazón es una persona o un momento que me marcó en el camino. Toca las piezas del centro para conocer más.</p>
   </div>
   <div class="gente__cuerpo">
     <div class="corazon" id="corazon" role="group" aria-label="Corazón de fotos de amigos"></div>
@@ -410,17 +412,24 @@ p { margin: 0 0 1.2em; max-width: 60ch; }
 </dialog>
 
 <script>
-/* ===================== EDITA-AMIGOS =====================
-   Cada línea es una persona del corazón. Cambia nombre, foto y nota.
-   Para agregar otra, copia una línea completa (hasta 16 personas).
-   Si hay menos de 16, las fotos se repiten para completar el corazón. */
-const AMIGOS = [
-  { nombre: "Mi socio",             foto: "img/amigo-1.svg", nota: "Con él aprendí que dos cabezas piensan mejor, sobre todo cuando una de las dos se ríe de las ideas de la otra." },
-  { nombre: "Mi mentor",            foto: "img/amigo-2.svg", nota: "Me dijo la verdad cuando más la necesitaba. Eso vale más que cualquier elogio." },
-  { nombre: "Mi mejor amigo",       foto: "img/amigo-3.svg", nota: "Estuvo antes del primer proyecto y sigue después de cada uno." },
-  { nombre: "Mi primera clienta",   foto: "img/amigo-4.svg", nota: "Confió en mí cuando nadie me conocía. Eso no se olvida." },
-  { nombre: "Mi equipo de siempre", foto: "img/amigo-5.svg", nota: "Los que se quedan hasta tarde y todavía sacan chistes." },
-  { nombre: "El que me hace reír",  foto: "img/amigo-6.svg", nota: "Sin él, las semanas difíciles serían mucho más largas." }
+
+/* ===================== EDITA-CORAZÓN =====================
+   1) CORAZON: las 16 fotos del corazón, una por pieza (sin repetir).
+      Se acomodan de izquierda a derecha y de arriba hacia abajo.
+   2) MENSAJES: los 6 textos que aparecen al tocar las piezas del centro. */
+const CORAZON = [
+  "img/corazon-1.svg",  "img/corazon-2.svg",  "img/corazon-3.svg",  "img/corazon-4.svg",
+  "img/corazon-5.svg",  "img/corazon-6.svg",  "img/corazon-7.svg",  "img/corazon-8.svg",
+  "img/corazon-9.svg",  "img/corazon-10.svg", "img/corazon-11.svg", "img/corazon-12.svg",
+  "img/corazon-13.svg", "img/corazon-14.svg", "img/corazon-15.svg", "img/corazon-16.svg"
+];
+const MENSAJES = [
+  { titulo: "Mis amigos son importantes", texto: "Los amigos que hice en el camino son parte de cada logro. Sin ellos nada de esto tendría sentido." },
+  { titulo: "Momento de voluntariado",    texto: "Ayudar a otros me recuerda para qué sirve todo lo que construyo." },
+  { titulo: "Trabajo en equipo",          texto: "Los mejores resultados llegan cuando todos jalan para el mismo lado." },
+  { titulo: "Risas que se quedan",        texto: "Los mejores recuerdos son los de las risas. Sin buen humor, el camino sería mucho más largo." },
+  { titulo: "Gente que me enseñó",        texto: "Mentores y amigos que me dijeron lo que necesitaba oír, aunque no siempre me gustara." },
+  { titulo: "Celebrar cada logro",        texto: "Cada avance, por pequeño que sea, merece una celebración con el equipo." }
 ];
 
 /* ===================== CÓDIGO (no hace falta tocarlo) ===================== */
@@ -449,32 +458,37 @@ if (rota && !quieto) {
 /* cinta sin cortes */
 $$(".cinta__pista").forEach((p) => p.appendChild(p.firstElementChild.cloneNode(true)));
 
-/* corazón de amigos */
-const FORMA = [".#.#.", "#####", "#####", ".###.", "..#.."];
-const corazon = $("#corazon"), piezas = [];
-function elegir(i, boton) {
-  const a = AMIGOS[i];
-  $("#ficha-foto").src = a.foto; $("#ficha-foto").alt = "Foto de " + a.nombre;
-  $("#ficha-nombre").textContent = a.nombre; $("#ficha-nota").textContent = a.nota;
-  piezas.forEach((p) => {
-    p.boton.setAttribute("aria-pressed", p.boton === boton ? "true" : "false");
-    p.boton.classList.toggle("misma", p.amigo === i && p.boton !== boton);
-  });
+/* corazón: # = foto fija, * = foto que se puede tocar (las 6 del centro) */
+const FORMA = [".#.#.", "#***#", "#***#", ".###.", "..#.."];
+const corazon = $("#corazon"), vivas = [];
+function elegir(p) {
+  $("#ficha-foto").src = p.foto; $("#ficha-foto").alt = p.mensaje.titulo;
+  $("#ficha-nombre").textContent = p.mensaje.titulo;
+  $("#ficha-nota").textContent = p.mensaje.texto;
+  vivas.forEach((v) => v.boton.setAttribute("aria-pressed", v === p ? "true" : "false"));
 }
-if (corazon && AMIGOS.length) {
-  let n = 0;
+if (corazon) {
+  let n = 0, m = 0;
   FORMA.forEach((fila, r) => [...fila].forEach((c, col) => {
-    if (c !== "#") return;
-    const i = n % AMIGOS.length, b = document.createElement("button");
-    b.type = "button"; b.className = "pieza"; b.setAttribute("aria-pressed", "false");
-    b.setAttribute("aria-label", AMIGOS[i].nombre);
-    b.style.gridRow = r + 1; b.style.gridColumn = col + 1; b.style.setProperty("--i", n);
-    b.innerHTML = '<img src="' + AMIGOS[i].foto + '" alt="">';
-    b.addEventListener("click", () => elegir(i, b));
-    corazon.appendChild(b); piezas.push({ boton: b, amigo: i }); n++;
+    if (c === ".") return;
+    const foto = CORAZON[n % CORAZON.length];
+    let el;
+    if (c === "*") {
+      el = document.createElement("button");
+      el.type = "button"; el.className = "pieza pieza--viva"; el.setAttribute("aria-pressed", "false");
+      const p = { boton: el, foto, mensaje: MENSAJES[m % MENSAJES.length] };
+      el.setAttribute("aria-label", p.mensaje.titulo);
+      el.addEventListener("click", () => elegir(p));
+      vivas.push(p); m++;
+    } else {
+      el = document.createElement("div");
+      el.className = "pieza pieza--fija";
+    }
+    el.style.gridRow = r + 1; el.style.gridColumn = col + 1; el.style.setProperty("--i", n);
+    el.innerHTML = '<img src="' + foto + '" alt="">';
+    corazon.appendChild(el); n++;
   }));
-  const medio = piezas[Math.floor(piezas.length / 2)];
-  elegir(medio.amigo, medio.boton);
+  if (vivas.length) elegir(vivas[0]);
 }
 
 /* aparecer al hacer scroll */
