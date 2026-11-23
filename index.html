@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<!--
+  PORTAFOLIO DE JOEL C.
+  Solo hay 2 cosas: este index.html y la carpeta img.
+
+  CÓMO EDITARLO (usa Ctrl + F para buscar):
+  1) FOTOS: pon tus fotos en la carpeta img y cambia el nombre en el src.
+  2) VIDEO: guarda tu video como  mi-video.mp4  dentro de la carpeta img.
+  3) COLORES: busca  EDITA-COLORES  (arriba, en el bloque de estilos).
+  4) AMIGOS DEL CORAZÓN: busca  EDITA-AMIGOS  (abajo, en el bloque de script).
+  5) CONTACTO: busca  EDITA-CONTACTO  (correo, WhatsApp, Instagram, LinkedIn).
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joel C. | Portafolio</title>
+  <meta name="description" content="Portafolio de Joel C.: emprendedor, líder y la gente que lo ha acompañado en el camino.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121014'/%3E%3Cpath fill='%23e5202b' d='M16 26 5.5 15.5A6 6 0 0 1 16 8.2a6 6 0 0 1 10.5 7.3z'/%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===================== EDITA-COLORES ===================== */
+:root {
+  --negro: #121014;
+  --hueso: #f4eee3;
+  --rojo: #e5202b;
+  --rosa: #f5cfc9;
+  --gris: #5f5a63;
+
+  --titulos: "Instrument Serif", Georgia, serif;
+  --texto: "Manrope", system-ui, sans-serif;
+  --mano: "Caveat", "Segoe Script", cursive;
+  --alto-barra: 72px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--alto-barra); }
+body { margin: 0; font-family: var(--texto); font-size: 1.0625rem; line-height: 1.7; color: var(--negro); background: var(--hueso); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--rojo); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--titulos); font-weight: 400; margin: 0; line-height: 1; }
+h2 { font-size: clamp(2.6rem, 6vw, 5rem); font-style: italic; }
+p { margin: 0 0 1.2em; max-width: 60ch; }
+.intro { margin: 1.2rem 0 3rem; color: var(--gris); }
+
+.sec { padding: clamp(4.5rem, 10vw, 8rem) 7vw; }
+.oscuro { background: var(--negro); color: var(--hueso); }
+.oscuro .intro { color: #b9b3a8; }
+.rosa { background: var(--rosa); }
+.rojo { background: var(--rojo); color: var(--hueso); }
+
+.boton { display: inline-block; padding: .9rem 1.9rem; border: 2px solid var(--negro); border-radius: 999px; font: 600 1rem var(--texto); text-decoration: none; color: var(--negro); background: transparent; cursor: pointer; transition: transform .2s ease, background .2s ease, color .2s ease; }
+.boton:hover { transform: translateY(-3px); background: var(--negro); color: var(--hueso); }
+.boton--rojo { background: var(--rojo); border-color: var(--rojo); color: var(--hueso); }
+.boton--rojo:hover { background: var(--negro); border-color: var(--negro); }
+
+/* ---------- barra ---------- */
+.barra { position: fixed; top: 0; left: 0; right: 0; z-index: 60; height: var(--alto-barra); display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0 7vw; background: rgba(244,238,227,.95); backdrop-filter: blur(8px); border-bottom: 2px solid var(--negro); }
+.barra__logo { font-family: var(--titulos); font-style: italic; font-size: 1.9rem; text-decoration: none; }
+.barra ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.8rem; }
+.barra nav a { position: relative; text-decoration: none; font-size: .95rem; font-weight: 500; padding: .3rem 0; }
+.barra nav a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 0; height: 2px; background: var(--rojo); transition: right .3s ease; }
+.barra nav a:hover::after, .barra nav a[aria-current="true"]::after { right: 0; }
+
+/* ---------- inicio ---------- */
+.inicio { position: relative; min-height: 100svh; overflow: hidden; display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: center; gap: 2rem; padding: calc(var(--alto-barra) + 3rem) 7vw 4rem; }
+.inicio__texto { position: relative; z-index: 3; }
+.inicio h1 { font-size: clamp(5.5rem, 15vw, 14rem); font-style: italic; line-height: .82; letter-spacing: -.03em; margin: 0 -10vw 1.4rem 0; }
+.punto { color: var(--rojo); }
+.inicio__rota { font-family: var(--titulos); font-size: clamp(1.7rem, 3vw, 2.4rem); margin: 0 0 1rem; min-height: 1.3em; }
+.rota { display: inline-block; font-style: italic; color: var(--rojo); transition: opacity .35s ease, transform .35s ease; }
+.rota.sale { opacity: 0; transform: translateY(-12px); }
+.inicio__frase { font-size: 1.15rem; color: var(--gris); max-width: 32ch; margin-bottom: 2rem; }
+.inicio__botones { display: flex; flex-wrap: wrap; gap: .8rem; }
+
+.inicio__fotos { position: relative; display: flex; align-items: flex-end; gap: 1.2rem; padding: 2rem 0 0 2rem; }
+.inicio__fotos::before { content: ""; position: absolute; z-index: 0; width: 75%; aspect-ratio: 1; right: -5%; top: -6%; border-radius: 50%; background: var(--rojo); }
+.inicio__fotos::after { content: ""; position: absolute; z-index: 0; width: 24%; aspect-ratio: 1; left: -3%; bottom: -6%; border-radius: 50%; background: var(--rosa); }
+.inicio__fotos img { position: relative; z-index: 1; min-width: 0; object-fit: cover; border: 3px solid var(--negro); border-radius: 24px; animation: sube .9s cubic-bezier(.2, .8, .2, 1) both; }
+.inicio__fotos .f1 { flex: 60; aspect-ratio: 3 / 4; animation-delay: .1s; }
+.inicio__fotos .f2 { flex: 40; aspect-ratio: 4 / 5; animation-delay: .3s; margin-bottom: -1.5rem; }
+@keyframes sube { from { opacity: 0; translate: 0 50px; } to { opacity: 1; translate: 0 0; } }
+
+/* ---------- cinta ---------- */
+.cinta { background: var(--negro); color: var(--hueso); overflow: hidden; padding: 1.1rem 0; }
+.cinta__pista { display: flex; width: max-content; animation: cinta 28s linear infinite; }
+.cinta:hover .cinta__pista { animation-play-state: paused; }
+.cinta__grupo { display: flex; align-items: center; gap: 2.2rem; padding-right: 2.2rem; }
+.cinta span { font-family: var(--titulos); font-style: italic; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1; white-space: nowrap; }
+.cinta svg { width: 28px; height: 28px; fill: var(--rojo); flex: none; }
+@keyframes cinta { to { transform: translateX(-50%); } }
+
+/* ---------- historia ---------- */
+.historia { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
+.historia img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 24px; border: 3px solid var(--hueso); box-shadow: -16px 16px 0 var(--rojo); }
+.historia h2 { margin-bottom: 2rem; }
+.historia p { color: #ddd7cc; }
+
+/* ---------- camino ---------- */
+.camino__lista { list-style: none; margin: 3rem 0 0; padding: 0; position: relative; max-width: 900px; }
+.camino__lista::before, .camino__lista::after { content: ""; position: absolute; left: 6.4rem; top: 0; width: 3px; border-radius: 3px; }
+.camino__lista::before { bottom: 0; background: rgba(18,16,20,.15); }
+.camino__lista::after { height: calc(var(--prog, 0) * 100%); background: var(--rojo); }
+.camino__lista li { position: relative; padding: 0 0 3.2rem 9.5rem; }
+.camino__lista li:last-child { padding-bottom: 0; }
+.camino__lista li::before { content: ""; position: absolute; left: 6.4rem; top: 1.2rem; width: 16px; height: 16px; margin-left: -6px; border-radius: 50%; background: var(--hueso); border: 3px solid var(--rojo); }
+.camino__num { position: absolute; left: 0; top: -.4rem; font-family: var(--titulos); font-style: italic; font-size: 4.2rem; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--negro); }
+.camino__lista h3 { font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: .5rem; }
+.camino__lista p { margin: 0; color: var(--gris); }
+
+/* ---------- proyectos ---------- */
+.lista { border-top: 1px solid rgba(244,238,227,.25); }
+.proy { border-bottom: 1px solid rgba(244,238,227,.25); }
+.proy summary { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; list-style: none; cursor: pointer; padding: 1.6rem 0; transition: padding .3s ease, color .3s ease; }
+.proy summary::-webkit-details-marker { display: none; }
+.proy__titulo { font-family: var(--titulos); font-size: clamp(2rem, 5.2vw, 4.4rem); line-height: 1; }
+.proy__anio { color: var(--rosa); white-space: nowrap; font-weight: 500; }
+.proy summary:hover, .proy[open] summary { color: var(--rojo); padding-left: 1.2rem; }
+.proy__cuerpo { padding: .3rem 0 2.6rem 1.2rem; animation: abre .5s ease both; }
+.proy__cuerpo p { color: #ddd7cc; }
+@keyframes abre { from { opacity: 0; translate: 0 -12px; } to { opacity: 1; translate: 0 0; } }
+.proy__meta { display: inline-block; padding: .25rem 1rem; background: var(--rojo); color: var(--hueso) !important; border-radius: 999px; font-size: .92rem; font-weight: 600; margin: 0; }
+
+/* ---------- mi gente (corazón) ---------- */
+.gente__cabeza { max-width: 900px; margin-bottom: 3.5rem; }
+.gente__cabeza h2 { margin-bottom: 1.2rem; }
+.gente__cuerpo { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.corazon { display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(5, 1fr); gap: 7px; aspect-ratio: 1; width: 100%; max-width: 500px; justify-self: center; animation: lat 2.6s ease-in-out infinite; transform-origin: 50% 55%; }
+@keyframes lat { 0%, 100% { transform: scale(1); } 12% { transform: scale(1.035); } 24% { transform: scale(1); } 36% { transform: scale(1.025); } }
+.pieza { padding: 0; margin: 0; cursor: pointer; border: 2px solid var(--negro); border-radius: 12px; overflow: hidden; background: var(--hueso); transition: transform .25s ease, box-shadow .25s ease; }
+.pieza img { width: 100%; height: 100%; object-fit: cover; }
+.pieza:hover { transform: translateY(-4px) rotate(-3deg); }
+.pieza.misma { box-shadow: 0 0 0 3px var(--hueso); }
+.pieza[aria-pressed="true"] { transform: scale(1.12); z-index: 3; position: relative; box-shadow: 0 0 0 3px var(--rojo), 5px 5px 0 3px var(--negro); }
+.js .corazon .pieza { opacity: 0; scale: .4; }
+.js .corazon.ve .pieza { opacity: 1; scale: 1; transition: opacity .5s ease calc(var(--i) * 70ms), scale .6s cubic-bezier(.2, 1.5, .4, 1) calc(var(--i) * 70ms), transform .25s ease, box-shadow .25s ease; }
+.ficha { background: var(--hueso); border: 3px solid var(--negro); border-radius: 24px; padding: 1.3rem; box-shadow: 8px 8px 0 var(--negro); }
+.ficha img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 2px solid var(--negro); border-radius: 16px; margin-bottom: 1.1rem; }
+.ficha h3 { font-size: 2.3rem; font-style: italic; margin-bottom: .5rem; }
+.ficha__nota { font-family: var(--mano); font-size: 1.7rem; line-height: 1.2; margin: 0; color: var(--rojo); }
+
+/* ---------- video ---------- */
+.video__marco { position: relative; max-width: 1000px; background: #000; border: 3px solid var(--hueso); border-radius: 22px; overflow: hidden; box-shadow: 12px 12px 0 var(--rojo); }
+.video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+.video__play { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 92px; height: 92px; border-radius: 50%; border: 3px solid var(--hueso); background: var(--rojo); display: grid; place-items: center; cursor: pointer; transition: transform .25s ease, background .25s ease; }
+.video__play:hover { transform: scale(1.08); background: var(--negro); }
+.video__play svg { width: 30px; height: 30px; fill: var(--hueso); margin-left: 4px; }
+.video__play[hidden] { display: none; }
+.video__aviso { position: absolute; left: 0; right: 0; top: 0; margin: 0; padding: .9rem 1.4rem; background: var(--rojo); color: var(--hueso); max-width: none; font-weight: 600; }
+
+/* ---------- momentos ---------- */
+.galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; }
+.galeria figure { margin: 0; }
+.galeria button { display: block; width: 100%; padding: 0; border: 3px solid var(--negro); border-radius: 22px; overflow: hidden; background: none; cursor: zoom-in; transition: transform .3s ease, box-shadow .3s ease; }
+.galeria figure:nth-child(odd) button { transform: rotate(-1.5deg); }
+.galeria figure:nth-child(even) button { transform: rotate(1.5deg) translateY(1rem); }
+.galeria button:hover { transform: rotate(0) translateY(-6px); box-shadow: 8px 8px 0 var(--rojo); }
+.galeria img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.galeria figcaption { padding: 1.3rem .3rem 0; font-weight: 600; }
+
+/* ---------- contacto ---------- */
+.contacto :focus-visible { outline-color: var(--hueso); }
+.contacto h2 { font-size: clamp(3.5rem, 11vw, 9rem); margin-bottom: 1.5rem; }
+.contacto__correo { display: inline-block; font-family: var(--titulos); font-size: clamp(1.8rem, 4.5vw, 3.6rem); text-decoration: none; border-bottom: 2px solid var(--hueso); margin: .5rem 0 2.5rem; transition: color .2s ease, border-color .2s ease; }
+.contacto__correo:hover { color: var(--negro); border-color: var(--negro); }
+.contacto__lista { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 1.5rem 2rem; align-items: center; }
+.contacto .boton { background: var(--negro); border-color: var(--negro); color: var(--hueso); }
+.contacto .boton:hover { background: var(--hueso); border-color: var(--hueso); color: var(--negro); }
+.enlace { font-weight: 600; font-size: 1.1rem; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+.enlace:hover { color: var(--negro); }
+
+.pie { background: var(--negro); color: #b9b3a8; padding: 2rem 7vw; text-align: center; font-size: .95rem; }
+.pie p { margin: 0 auto; }
+
+/* ---------- visor de fotos ---------- */
+.visor { border: 3px solid var(--rojo); border-radius: 22px; background: var(--negro); color: var(--hueso); padding: 1.2rem; max-width: min(92vw, 900px); }
+.visor::backdrop { background: rgba(10, 8, 12, .88); }
+.visor img { max-height: 70vh; width: auto; max-width: 100%; margin: 2.6rem auto 0; border-radius: 12px; }
+.visor p { text-align: center; margin: .8rem auto 0; }
+.visor button { font: 600 .92rem var(--texto); background: var(--hueso); color: var(--negro); border: 2px solid var(--hueso); border-radius: 999px; padding: .4rem 1.1rem; cursor: pointer; }
+.visor button:hover { background: var(--rojo); border-color: var(--rojo); color: var(--hueso); }
+.visor__cerrar { position: absolute; top: 1rem; right: 1rem; }
+.visor__nav { position: absolute; bottom: 1rem; }
+.visor__ant { left: 1rem; }
+.visor__sig { right: 1rem; }
+.visor :focus-visible { outline-color: var(--hueso); }
+
+/* ---------- aparecer al hacer scroll ---------- */
+.js [data-rev] { opacity: 0; transform: translateY(32px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .8, .2, 1); }
+.js [data-rev].ve { opacity: 1; transform: none; }
+
+/* ---------- móvil ---------- */
+@media (max-width: 860px) {
+  :root { --alto-barra: 92px; }
+  .barra { flex-direction: column; justify-content: center; gap: .1rem; padding: .4rem 5vw; }
+  .barra nav { width: 100%; overflow-x: auto; }
+  .barra ul { width: max-content; gap: 1.3rem; }
+  .inicio, .historia, .gente__cuerpo { grid-template-columns: 1fr; }
+  .inicio h1 { margin-right: 0; }
+  .inicio__fotos { padding-left: 0; }
+  .proy__cuerpo { padding-left: 0; }
+  .proy summary:hover, .proy[open] summary { padding-left: .4rem; }
+  .camino__lista::before, .camino__lista::after, .camino__lista li::before { left: 3.4rem; }
+  .camino__lista li { padding-left: 6rem; }
+  .camino__num { font-size: 3rem; }
+  .galeria figure:nth-child(even) button { transform: rotate(1.5deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js [data-rev] { opacity: 1; transform: none; }
+  .js .corazon .pieza { opacity: 1; scale: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===================== BARRA ===================== -->
+<header class="barra">
+  <a class="barra__logo" href="#inicio">Joel C.</a>
+  <nav aria-label="Secciones">
+    <ul>
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#camino">Camino</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#gente">Mi gente</a></li>
+      <li><a href="#video">Video</a></li>
+      <li><a href="#momentos">Momentos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- ===================== INICIO ===================== -->
+<section class="inicio" id="inicio">
+  <div class="inicio__texto">
+    <h1>Joel C<span class="punto">.</span></h1>
+    <p class="inicio__rota">Soy <span class="rota" id="rota">emprendedor.</span></p>
+    <p class="inicio__frase">Construyo ideas, armo equipos y me rodeo de gente que vale oro.</p>
+    <div class="inicio__botones">
+      <a class="boton boton--rojo" href="#gente">Conoce a mi gente</a>
+      <a class="boton" href="#video">Ver mi video</a>
+    </div>
+  </div>
+  <!-- FOTOS 1 y 2 -->
+  <div class="inicio__fotos">
+    <img class="f1" src="img/joel-1.svg" alt="Joel C., retrato principal" width="800" height="1000">
+    <img class="f2" src="img/joel-2.svg" alt="Joel C. en acción" width="700" height="880">
+  </div>
+</section>
+
+<!-- cinta que se mueve -->
+<div class="cinta" aria-hidden="true">
+  <div class="cinta__pista">
+    <div class="cinta__grupo">
+      <span>Emprendedor</span><svg viewBox="0 0 24 24"><path d="M12 21 3.5 12.5A4.8 4.8 0 0 1 12 6.4a4.8 4.8 0 0 1 8.5 6.1z"/></svg>
+      <span>Líder</span><svg viewBox="0 0 24 24"><path d="M12 21 3.5 12.5A4.8 4.8 0 0 1 12 6.4a4.8 4.8 0 0 1 8.5 6.1z"/></svg>
+      <span>Buen humor</span><svg viewBox="0 0 24 24"><path d="M12 21 3.5 12.5A4.8 4.8 0 0 1 12 6.4a4.8 4.8 0 0 1 8.5 6.1z"/></svg>
+      <span>Amigo</span><svg viewBox="0 0 24 24"><path d="M12 21 3.5 12.5A4.8 4.8 0 0 1 12 6.4a4.8 4.8 0 0 1 8.5 6.1z"/></svg>
+      <span>Hecho de gente</span><svg viewBox="0 0 24 24"><path d="M12 21 3.5 12.5A4.8 4.8 0 0 1 12 6.4a4.8 4.8 0 0 1 8.5 6.1z"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HISTORIA ===================== -->
+<section class="historia sec oscuro" id="historia">
+  <!-- FOTO 3 -->
+  <img data-rev src="img/historia.svg" alt="Joel C. con su equipo" width="800" height="1000">
+  <div>
+    <h2 data-rev>Nada de esto lo hice solo.</h2>
+    <p data-rev>Soy Joel. Emprendo, lidero equipos y creo que el trabajo rinde más cuando el ambiente es bueno. Prefiero una reunión con risas que una con caras largas, y casi siempre las mejores ideas salen cuando nadie se está tomando demasiado en serio.</p>
+    <p data-rev>Con el tiempo entendí que lo que de verdad se construye en cada proyecto no es solo un negocio: es una red de personas. Socios, mentores, clientes que se volvieron amigos y gente que me dio una mano cuando yo no tenía nada que ofrecer a cambio.</p>
+    <p data-rev>Esta página es mi forma de agradecerles. Y también una invitación: si buscas a alguien que tome decisiones, mueva al equipo y no pierda el humor en el camino, aquí me tienes.</p>
+  </div>
+</section>
+
+<!-- ===================== CAMINO ===================== -->
+<section class="camino sec" id="camino">
+  <h2 data-rev>Mi camino</h2>
+  <p class="intro" data-rev>Cuatro etapas que me enseñaron más que cualquier libro.</p>
+  <ol class="camino__lista" id="camino-lista">
+    <li data-rev>
+      <span class="camino__num" aria-hidden="true">01</span>
+      <h3>La idea</h3>
+      <p>Todo empezó con una idea y más ganas que recursos. Aprendí que empezar imperfecto es mejor que esperar el momento ideal.</p>
+    </li>
+    <li data-rev>
+      <span class="camino__num" aria-hidden="true">02</span>
+      <h3>El primer equipo</h3>
+      <p>Descubrí que liderar es escuchar. Las mejores decisiones llegaron cuando le di espacio a la gente que hacía el trabajo.</p>
+    </li>
+    <li data-rev>
+      <span class="camino__num" aria-hidden="true">03</span>
+      <h3>Los tropiezos</h3>
+      <p>Hubo errores, cambios de rumbo y noches largas. También hubo amigos que se quedaron a ayudar sin que nadie se lo pidiera.</p>
+    </li>
+    <li data-rev>
+      <span class="camino__num" aria-hidden="true">04</span>
+      <h3>Hoy</h3>
+      <p>Sigo construyendo, con más experiencia, la misma energía y una red de personas que ya siento como familia.</p>
+    </li>
+  </ol>
+</section>
+
+<!-- ===================== PROYECTOS ===================== -->
+<section class="proyectos sec oscuro" id="proyectos">
+  <h2 data-rev>Lo que he construido</h2>
+  <p class="intro" data-rev>Tres etapas, tres proyectos. Toca uno para abrirlo.</p>
+  <div class="lista" data-rev>
+    <details class="proy">
+      <summary><span class="proy__titulo">Mi primer negocio</span><span class="proy__anio">Inicio</span></summary>
+      <div class="proy__cuerpo">
+        <p>Donde todo empezó: una idea sencilla que aprendí a convertir en negocio, con errores, clientes reales y mucho aprendizaje. Aquí entendí lo que significa responder por un equipo.</p>
+        <p class="proy__meta">Fundador</p>
+      </div>
+    </details>
+    <details class="proy">
+      <summary><span class="proy__titulo">El equipo</span><span class="proy__anio">Crecimiento</span></summary>
+      <div class="proy__cuerpo">
+        <p>Un proyecto hecho junto a socios y amigos, donde aprendí a delegar, medir resultados y celebrar cada avance, por pequeño que fuera.</p>
+        <p class="proy__meta">Cofundador</p>
+      </div>
+    </details>
+    <details class="proy">
+      <summary><span class="proy__titulo">Lo que viene</span><span class="proy__anio">Hoy</span></summary>
+      <div class="proy__cuerpo">
+        <p>Mi proyecto actual: más grande, más claro y construido sobre todo lo aprendido, junto a las personas que me han acompañado desde el principio.</p>
+        <p class="proy__meta">Líder del proyecto</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===================== MI GENTE ===================== -->
+<section class="gente sec rosa" id="gente">
+  <div class="gente__cabeza">
+    <h2 data-rev>Mi gente, en un pedacito de mi corazón</h2>
+    <p data-rev>Cada pieza de este corazón es una persona que estuvo en algún momento del camino. Toca una pieza para conocerla.</p>
+  </div>
+  <div class="gente__cuerpo">
+    <div class="corazon" id="corazon" role="group" aria-label="Corazón de fotos de amigos"></div>
+    <aside class="ficha" id="ficha" aria-live="polite">
+      <img id="ficha-foto" src="" alt="" width="400" height="400">
+      <h3 id="ficha-nombre"></h3>
+      <p class="ficha__nota" id="ficha-nota"></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ===================== VIDEO ===================== -->
+<section class="video sec oscuro" id="video">
+  <h2 data-rev>Mi historia en video</h2>
+  <p class="intro" data-rev>Dale play y conoce un poco más del camino.</p>
+  <div class="video__marco" data-rev>
+    <!-- El video va dentro de la carpeta img con el nombre mi-video.mp4 -->
+    <video id="mi-video" controls playsinline preload="metadata" poster="img/video-portada.svg">
+      <source src="img/mi-video.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+    <button class="video__play" id="video-play" type="button" aria-label="Reproducir video">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+    </button>
+    <p class="video__aviso" id="video-aviso" hidden>Aquí va tu video. Guárdalo como <b>mi-video.mp4</b> dentro de la carpeta <b>img</b>.</p>
+  </div>
+</section>
+
+<!-- ===================== MOMENTOS ===================== -->
+<section class="momentos sec" id="momentos">
+  <h2 data-rev>Momentos</h2>
+  <p class="intro" data-rev>Reuniones, viajes, equipos y risas. Toca una foto para verla grande.</p>
+  <div class="galeria">
+    <figure data-rev><button type="button"><img src="img/momento-1.svg" alt="Reuniones" loading="lazy"></button><figcaption>Reuniones</figcaption></figure>
+    <figure data-rev><button type="button"><img src="img/momento-2.svg" alt="Viajes" loading="lazy"></button><figcaption>Viajes</figcaption></figure>
+    <figure data-rev><button type="button"><img src="img/momento-3.svg" alt="El equipo" loading="lazy"></button><figcaption>El equipo</figcaption></figure>
+    <figure data-rev><button type="button"><img src="img/momento-4.svg" alt="Celebraciones" loading="lazy"></button><figcaption>Celebraciones</figcaption></figure>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section class="contacto sec rojo" id="contacto">
+  <h2 data-rev>Hablemos</h2>
+  <p data-rev>Si tienes una idea, un proyecto o solo quieres saludar, escríbeme. Siempre respondo, y casi siempre con buen humor.</p>
+  <!-- EDITA-CONTACTO: cambia estos datos por los reales -->
+  <a class="contacto__correo" data-rev href="mailto:joel@ejemplo.com">joel@ejemplo.com</a>
+  <ul class="contacto__lista" data-rev>
+    <li><a class="boton" href="https://wa.me/50700000000" target="_blank" rel="noopener">Escribir por WhatsApp</a></li>
+    <li><a class="enlace" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a class="enlace" href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="pie"><p>Joel C. Hecho con la gente que quiero.</p></footer>
+
+<dialog class="visor" id="visor" aria-label="Foto ampliada">
+  <button class="visor__cerrar" type="button" id="visor-cerrar" aria-label="Cerrar">Cerrar</button>
+  <button class="visor__nav visor__ant" type="button" id="visor-ant" aria-label="Foto anterior">Anterior</button>
+  <img id="visor-img" src="" alt="">
+  <p id="visor-pie"></p>
+  <button class="visor__nav visor__sig" type="button" id="visor-sig" aria-label="Foto siguiente">Siguiente</button>
+</dialog>
+
+<script>
+/* ===================== EDITA-AMIGOS =====================
+   Cada línea es una persona del corazón. Cambia nombre, foto y nota.
+   Para agregar otra, copia una línea completa (hasta 16 personas).
+   Si hay menos de 16, las fotos se repiten para completar el corazón. */
+const AMIGOS = [
+  { nombre: "Mi socio",             foto: "img/amigo-1.svg", nota: "Con él aprendí que dos cabezas piensan mejor, sobre todo cuando una de las dos se ríe de las ideas de la otra." },
+  { nombre: "Mi mentor",            foto: "img/amigo-2.svg", nota: "Me dijo la verdad cuando más la necesitaba. Eso vale más que cualquier elogio." },
+  { nombre: "Mi mejor amigo",       foto: "img/amigo-3.svg", nota: "Estuvo antes del primer proyecto y sigue después de cada uno." },
+  { nombre: "Mi primera clienta",   foto: "img/amigo-4.svg", nota: "Confió en mí cuando nadie me conocía. Eso no se olvida." },
+  { nombre: "Mi equipo de siempre", foto: "img/amigo-5.svg", nota: "Los que se quedan hasta tarde y todavía sacan chistes." },
+  { nombre: "El que me hace reír",  foto: "img/amigo-6.svg", nota: "Sin él, las semanas difíciles serían mucho más largas." }
+];
+
+/* ===================== CÓDIGO (no hace falta tocarlo) ===================== */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* menú: sección activa */
+const enlaces = $$(".barra nav a");
+const activa = new IntersectionObserver((es) => es.forEach((e) => {
+  if (e.isIntersecting) enlaces.forEach((a) => a.setAttribute("aria-current", a.getAttribute("href") === "#" + e.target.id ? "true" : "false"));
+}), { rootMargin: "-45% 0px -50% 0px" });
+$$("main > section").forEach((s) => activa.observe(s));
+
+/* palabra que cambia */
+const rota = $("#rota");
+if (rota && !quieto) {
+  const palabras = ["emprendedor.", "líder.", "el del buen humor.", "amigo de mi gente."];
+  let k = 0;
+  setInterval(() => {
+    rota.classList.add("sale");
+    setTimeout(() => { k = (k + 1) % palabras.length; rota.textContent = palabras[k]; rota.classList.remove("sale"); }, 380);
+  }, 2600);
+}
+
+/* cinta sin cortes */
+$$(".cinta__pista").forEach((p) => p.appendChild(p.firstElementChild.cloneNode(true)));
+
+/* corazón de amigos */
+const FORMA = [".#.#.", "#####", "#####", ".###.", "..#.."];
+const corazon = $("#corazon"), piezas = [];
+function elegir(i, boton) {
+  const a = AMIGOS[i];
+  $("#ficha-foto").src = a.foto; $("#ficha-foto").alt = "Foto de " + a.nombre;
+  $("#ficha-nombre").textContent = a.nombre; $("#ficha-nota").textContent = a.nota;
+  piezas.forEach((p) => {
+    p.boton.setAttribute("aria-pressed", p.boton === boton ? "true" : "false");
+    p.boton.classList.toggle("misma", p.amigo === i && p.boton !== boton);
+  });
+}
+if (corazon && AMIGOS.length) {
+  let n = 0;
+  FORMA.forEach((fila, r) => [...fila].forEach((c, col) => {
+    if (c !== "#") return;
+    const i = n % AMIGOS.length, b = document.createElement("button");
+    b.type = "button"; b.className = "pieza"; b.setAttribute("aria-pressed", "false");
+    b.setAttribute("aria-label", AMIGOS[i].nombre);
+    b.style.gridRow = r + 1; b.style.gridColumn = col + 1; b.style.setProperty("--i", n);
+    b.innerHTML = '<img src="' + AMIGOS[i].foto + '" alt="">';
+    b.addEventListener("click", () => elegir(i, b));
+    corazon.appendChild(b); piezas.push({ boton: b, amigo: i }); n++;
+  }));
+  const medio = piezas[Math.floor(piezas.length / 2)];
+  elegir(medio.amigo, medio.boton);
+}
+
+/* aparecer al hacer scroll */
+const ver = new IntersectionObserver((es) => es.forEach((e) => {
+  if (e.isIntersecting) { e.target.classList.add("ve"); ver.unobserve(e.target); }
+}), { threshold: 0.15, rootMargin: "0px 0px -6% 0px" });
+$$("[data-rev]").forEach((el, i) => { el.style.transitionDelay = (i % 3) * 90 + "ms"; ver.observe(el); });
+if (corazon) ver.observe(corazon);
+
+/* línea de tiempo que se llena */
+const lista = $("#camino-lista");
+function alScroll() {
+  if (!lista) return;
+  const r = lista.getBoundingClientRect();
+  lista.style.setProperty("--prog", Math.min(1, Math.max(0, (innerHeight * 0.6 - r.top) / r.height)).toFixed(3));
+}
+addEventListener("scroll", alScroll, { passive: true }); addEventListener("resize", alScroll); alScroll();
+
+/* proyectos: uno abierto a la vez */
+const proys = $$(".proy");
+proys.forEach((d) => d.addEventListener("toggle", () => { if (d.open) proys.forEach((o) => { if (o !== d) o.open = false; }); }));
+
+/* video */
+const video = $("#mi-video");
+if (video) {
+  const aviso = $("#video-aviso"), play = $("#video-play");
+  const falta = () => { aviso.hidden = false; play.hidden = true; };
+  $("source", video).addEventListener("error", falta); video.addEventListener("error", falta);
+  play.addEventListener("click", () => video.play());
+  video.addEventListener("play", () => { play.hidden = true; });
+  video.addEventListener("pause", () => { if (!video.ended) play.hidden = false; });
+  video.addEventListener("ended", () => { play.hidden = false; });
+}
+
+/* galería con visor */
+const visor = $("#visor"), fotos = $$(".galeria button");
+let actual = 0;
+function abrir(i) {
+  actual = (i + fotos.length) % fotos.length;
+  const img = $("img", fotos[actual]);
+  $("#visor-img").src = img.src; $("#visor-img").alt = img.alt;
+  $("#visor-pie").textContent = $("figcaption", fotos[actual].parentElement).textContent;
+  if (!visor.open) visor.showModal();
+}
+fotos.forEach((b, i) => b.addEventListener("click", () => abrir(i)));
+$("#visor-cerrar").addEventListener("click", () => visor.close());
+$("#visor-ant").addEventListener("click", () => abrir(actual - 1));
+$("#visor-sig").addEventListener("click", () => abrir(actual + 1));
+visor.addEventListener("click", (e) => { if (e.target === visor) visor.close(); });
+document.addEventListener("keydown", (e) => {
+  if (!visor.open) return;
+  if (e.key === "ArrowLeft") abrir(actual - 1);
+  if (e.key === "ArrowRight") abrir(actual + 1);
+});
+</script>
+</body>
+</html>
